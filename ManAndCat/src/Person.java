@@ -24,14 +24,16 @@ class Person {
         this.age = age;
     }
 
-    public void call() {
-        // звать кота
-        System.out.println(" Кис-кис-кис.");
+    public void call(Animal animal) {
+        // звать животное
+        System.out.println(getName() + " зовет " + animal.getName());
+        animal.call();
     }
 
-    public void petCat() {
-        // гладить кота
-        System.out.println(" гладить котика");
+    public void petCat(Animal animal) {
+        // гладить животное
+        System.out.println(getName() + " гладит " + animal.getName());
+        animal.reaction();
     }
 
 }

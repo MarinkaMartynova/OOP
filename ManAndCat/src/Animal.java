@@ -1,35 +1,41 @@
-class Animal {
+public abstract class Animal implements Action {
     private String name;
-    private String breed;
+    private int age;
+    private String color;
 
-    public Animal(String name, String breed) {
+    public Animal(String name, int age,  String color) {
         this.name = name;
-        this.breed = breed;
-
+        this.age = age;
+        this.color = color;
     }
 
     public String getName() {
 
         return name;
     }
-
     public void setName(String name) {
 
         this.name = name;
     }
 
-    public String getBreed() {
-
-        return breed;
+    public int getAge() {
+        return age;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-    public void feed(){
-        //кормление
-        System.out.println(" Процес кормления котика");
+    public void setAge(int age) {
+        this.age = age;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public abstract void voice();
+
+    public abstract void eat();
 }
 

@@ -1,13 +1,14 @@
-public class Cat extends Animal {
-    public Cat(String name, int age, String color) {
+public class Dog extends Animal {
+    public Dog(String name, int age, String color) {
         super(name, age, color);
     }
     @Override
-    public void voice(){
-        System.out.println(" мяу!");
+    public void voice() {
+        System.out.println("гав, гав");
     }
+
     @Override
-    public void eat(){
+    public void eat() {
         System.out.println(getName() + " ест");
     }
     @Override
