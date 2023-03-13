@@ -1,32 +1,33 @@
 public class Main {
     public static void main(String[] args) {
-        Person irina = new Person("Ирина");
-        Person vasya = new Person("Вася");
-        Person masha = new Person("Маша");
-        Person jane = new Person("Женя");
-        Person ivan = new Person("Ваня");
-        Person katya = new Person("Катя");
-        Person sasha = new Person("Саша");
-        Person nadya = new Person("Надя");
+        Person irina = new Person("Ирина", 50);
+        Person vasya = new Person("Вася", 30);
+        Person masha = new Person("Маша", 29);
+        Person jane = new Person("Женя", 2);
+        Person ivan = new Person("Ваня", 7);
+        Person katya = new Person("Катя", 6);
+        Person sasha = new Person("Саша", 50);
+        Person nadya = new Person("Надя", 26);
         GeoTree gt = new GeoTree();
-        gt.append(irina, vasya);
-        gt.append(irina, masha);
-        gt.append(vasya, jane);
-        gt.append(vasya, ivan);
-        gt.append(sasha, vasya);
-        gt.append(sasha, masha);
-        gt.append(masha, katya);
-        gt.appendPartner(irina, sasha);
-        gt.appendPartner(vasya, nadya);
-        gt.appendSibling(vasya,masha);
-        gt.appendSibling(jane,ivan);
+        gt.append(irina, Relationship.parent, vasya);
+        gt.append(irina, Relationship.parent, masha);
+        gt.append(vasya, Relationship.parent, jane);
+        gt.append(vasya, Relationship.parent, ivan);
+        gt.append(sasha, Relationship.parent, vasya);
+        gt.append(sasha, Relationship.parent, masha);
+        gt.append(masha, Relationship.parent, katya);
+        gt.append(irina, Relationship.partner, sasha);
+        gt.append(vasya, Relationship.partner, nadya);
+        gt.append(vasya, Relationship.sibling, masha);
+        gt.append(jane, Relationship.sibling, ivan);
 
-        System.out.println(new Reserch(gt).spend(vasya,
+        System.out.println(new Reserch(gt).spend(irina,
                 Relationship.parent));
-        System.out.println(new Reserch(gt).spend(vasya,
+        System.out.println(new Reserch(gt).spend(irina,
                 Relationship.partner));
         System.out.println(new Reserch(gt).spend(vasya,
                 Relationship.sibling));
-    }
 
+
+    }
 }

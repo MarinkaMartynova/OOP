@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Reserch {
+
     ArrayList<String> result = new ArrayList<>();
     ArrayList<Node> tree;
 
@@ -8,10 +9,10 @@ public class Reserch {
         tree = geoTree.getTree();
     }
 
-    public ArrayList<String> spend(Person p, Relationship re) {
-        for (Node t : tree) {
-            if (t.p1.fullName == p.fullName && t.re == re) {
-                result.add(t.p2.fullName);
+    public ArrayList<String> spend(Person person1, Relationship re) {
+        for (Node person : tree) {
+            if (person.p1.fullName == person1.fullName && person.re == re) {
+                result.add(person.p2.getName());
             }
         }
         return result;
