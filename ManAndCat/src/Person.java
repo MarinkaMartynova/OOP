@@ -1,13 +1,13 @@
 class Person {
     private String name;
     private int age;
+    public Object fullName;
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
 
     }
-
     public String getName() {
         return name;
     }
@@ -24,16 +24,16 @@ class Person {
         this.age = age;
     }
 
-    public void call(Animal animal) {
+    public void call(Cat cat) {
         // звать животное
-        System.out.println(getName() + " зовет " + animal.getName());
-        animal.call();
+        System.out.println("Иди сюда, " + cat.getName());
+        cat.call();
     }
 
-    public void petCat(Animal animal) {
+    public void petCat(Cat cat) {
         // гладить животное
-        System.out.println(getName() + " гладит " + animal.getName());
-        animal.reaction();
+        System.out.println(getName() + " гладит " + cat.getName() + "а. ");
+        cat.reaction();
     }
 
 }

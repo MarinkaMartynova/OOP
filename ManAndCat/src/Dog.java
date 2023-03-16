@@ -1,6 +1,7 @@
-public class Dog extends Animal {
+public class Dog extends Animal implements Voice, Reaction, Eat{
     public Dog(String name, int age, String color) {
         super(name, age, color);
+        this.satiety = (int) (Math.random() * 100);
     }
     @Override
     public void voice() {
@@ -12,11 +13,12 @@ public class Dog extends Animal {
         System.out.println(getName() + " ест");
     }
     @Override
-    public void call(){
-        System.out.println(getName() + " подходит");
-    }
-    @Override
     public void reaction(){
-        System.out.println(getName() + " радуется");
+       System.out.println(getName() + " ревнует и ругается :)");
+   }
+
+    @Override
+    public int compareTo(Animal o) {
+        return this.getAge() - o.getAge();
     }
 }

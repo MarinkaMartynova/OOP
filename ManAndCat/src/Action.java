@@ -1,6 +1,6 @@
-public interface Action {
-    void voice();
-    void eat();
-    void reaction();
-    void call();
-}
+//public interface Action {
+//    void voice();
+//    void eat();
+//    void reaction();
+//    void call();
+//}
