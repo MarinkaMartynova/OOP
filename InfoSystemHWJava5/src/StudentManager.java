@@ -1,5 +1,7 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class StudentManager implements StudentInterface {
     @Override
@@ -20,7 +22,7 @@ public class StudentManager implements StudentInterface {
         list.add(new Student(id, name, sex, age));
 
         System.out.println("Добавление завершено");
-        sc.close();
+        //sc.close();
     }
 
     @Override
@@ -59,7 +61,7 @@ public class StudentManager implements StudentInterface {
         if (!flag) {
             System.out.println("Студент не найден, дорогой");
         }
-        
+
     }
 
     @Override
@@ -80,7 +82,7 @@ public class StudentManager implements StudentInterface {
                 System.out.println("Удаление выполнено успешно, вы удалили:" + string);
             }
         }
-        
+
 
     }
 
@@ -94,6 +96,20 @@ public class StudentManager implements StudentInterface {
             System.out.println(student.toString());
             System.out.println("Информация отображена");
         }
+    }
+
+    @Override
+    public void saveToFileStudents(ArrayList<Student> list) {
+        try {
+            FileWriter writer = new FileWriter("students.txt");
+            for (Student student : list) {
+                writer.write(student.getId() + "," + student.getName() + "," + student.getSex() + "," + student.getAge() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Информация сохранена в файл");
     }
 
     @Override
@@ -112,4 +128,28 @@ public class StudentManager implements StudentInterface {
         }
 
     }
-}
+
+    @Override
+    public void openFileStudents(ArrayList<Student> list)  {
+        BufferedReader br = null;
+            try  {
+                File file = new File("students.txt");
+                if (!file.exists())
+                    file.createNewFile();
+                br = new BufferedReader(new FileReader("students.txt"));
+                String line;
+                while(((line = br.readLine()) != null)){
+                    System.out.println(line);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+}}
