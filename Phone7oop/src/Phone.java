@@ -1,4 +1,4 @@
-public abstract class Phone implements PhoneActions{
+public abstract class Phone implements MakeCall, TakeCall{
     protected String number;
     protected String owner;
 
@@ -27,4 +27,13 @@ public abstract class Phone implements PhoneActions{
         this.owner = owner;
     }
 
+    @Override
+    public void call() {
+        System.out.println("сделать звонок");
+    }
+
+    @Override
+    public void takeCall() {
+        System.out.println("принять звонок");
+    }
 }
